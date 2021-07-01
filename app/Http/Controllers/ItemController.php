@@ -36,9 +36,10 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ItemRequest $request)
+    public function store(Request $request)
     {
-        $Item = new Item($request->all());
+        $Item = new Item;
+        $Item->name = $request->item['name'];
         $Item->save();
 
         return response(
